@@ -1,10 +1,9 @@
-import styled, { css, useTheme } from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 import Select from "react-select";
 
 export const CustomSelect = styled(Select).attrs(() => {
   const theme = useTheme();
-  console.log(theme);
   return {
     styles: {
       control: (provided) => ({
