@@ -7,8 +7,11 @@ export const GlobalTheme = createGlobalStyle`
   color: ${({ theme }) => theme.colors.text};
   font-weight: ${({ theme }) => theme.font.weight.light};
   background-color:  ${({ theme }) => theme.colors.bg};
-}
+  }
 
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export enum ITheme {

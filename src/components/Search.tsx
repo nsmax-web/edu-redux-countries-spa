@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 import { IoSearch } from "react-icons/io5";
+import { ChangeEvent, FC } from "react";
+
+interface Props {
+  search: string;
+  setSearch: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 
 const InputContainer = styled.label`
   background-color: ${({ theme }) => theme.colors.base};
@@ -30,11 +36,11 @@ const Input = styled.input.attrs({
   background-color: ${({ theme }) => theme.colors.base};
 `;
 
-export const Search = ({ search, setSearch }) => {
+export const Search: FC<Props> = ({ search, setSearch }) => {
   return (
     <InputContainer>
       <IoSearch />
-      <Input onChange={(e) => setSearch(e.target.value)} value={search} />
+      <Input onChange={setSearch} value={search} />
     </InputContainer>
   );
 };

@@ -1,15 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import { Search } from './Search';
-import { CustomSelect } from './CustomSelect';
+import { Search } from "./Search";
+import { CustomSelect } from "./CustomSelect";
+import { ChangeEvent } from "react";
 
 const optionsMap = {
-  'Africa': { value: 'Africa', label: 'Africa' },
-  'America': { value: 'America', label: 'America' },
-  'Asia': { value: 'Asia', label: 'Asia' },
-  'Europe': { value: 'Europe', label: 'Europe' },
-  'Oceania': { value: 'Oceania', label: 'Oceania' },
-}
+  Africa: { value: "Africa", label: "Africa" },
+  America: { value: "America", label: "America" },
+  Asia: { value: "Asia", label: "Asia" },
+  Europe: { value: "Europe", label: "Europe" },
+  Oceania: { value: "Oceania", label: "Oceania" },
+};
 const options = Object.values(optionsMap);
 
 const Wrapper = styled.div`
@@ -25,15 +26,17 @@ const Wrapper = styled.div`
 `;
 
 export const Controls = () => {
+  const setSearch = (e: ChangeEvent<HTMLInputElement>) => {};
+
   return (
     <Wrapper>
-      <Search />
+      <Search search={""} setSearch={setSearch} />
       <CustomSelect
         options={options}
         placeholder="Filter by Region"
         isClearable
         isSearchable={false}
-        value={''}
+        value={""}
         onChange={() => {}}
       />
     </Wrapper>

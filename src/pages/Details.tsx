@@ -1,15 +1,14 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { IoArrowBack } from 'react-icons/io5';
+import { useNavigate, useParams } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
 
-import { Button } from '../components/Button';
-import { Info } from '../components/Info';
-
+import { Button } from "../components/Button";
+import { Info } from "../components/Info";
 
 export const Details = () => {
   const { name } = useParams();
   const navigate = useNavigate();
 
-  const currentCountry = null;
+  const currentCountry = null || {};
 
   return (
     <div>
