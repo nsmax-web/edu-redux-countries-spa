@@ -4,5 +4,5 @@ import { createReducer } from "@reduxjs/toolkit";
 
 // FIXME: createSlice
 export const themeReducer = createReducer(eTheme.dark, (builder) => {
-  builder.addCase(setTheme, (state, action) => (state = action.payload));
+  builder.addCase(setTheme, (state, action) => action.payload);
 });

@@ -13,10 +13,10 @@ import { baseTheme, GlobalTheme, themes } from "./styles/theme";
 function App() {
   const themeType = useAppSelector((state) => state.theme);
 
-  const theme = themes.find((t) => t.type === themeType) || baseTheme;
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider
+      theme={themes.find((t) => t.type === themeType) || baseTheme}
+    >
       <GlobalTheme />
       <Header />
       <Main>
