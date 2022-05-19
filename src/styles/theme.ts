@@ -14,14 +14,14 @@ export const GlobalTheme = createGlobalStyle`
   }
 `;
 
-export enum ITheme {
+export enum eTheme {
   dark = "dark",
   light = "light",
   base = "base",
 }
 
 export const baseTheme = {
-  type: ITheme.base,
+  type: eTheme.base,
   font: {
     family: "'Nunito Sans', sans-serif",
     size: {
@@ -47,7 +47,7 @@ export const baseTheme = {
 
 export const darkTheme = {
   ...baseTheme,
-  type: ITheme.dark,
+  type: eTheme.dark,
   colors: {
     text: "hsl(0, 0%, 100%)",
     bg: "hsl(207, 26%, 17%)",
@@ -58,7 +58,7 @@ export const darkTheme = {
 
 export const lightTheme = {
   ...baseTheme,
-  type: ITheme.light,
+  type: eTheme.light,
   colors: {
     text: "hsl(0, 0%, 100%)",
     bg: "hsl(207, 26%, 17%)",
@@ -66,3 +66,5 @@ export const lightTheme = {
     shadow: "rgba(245, 245, 245, 0.2) 0 0 8px",
   },
 };
+
+export const themes = [darkTheme, lightTheme, baseTheme];

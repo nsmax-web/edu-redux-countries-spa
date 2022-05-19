@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { IoMoon, IoMoonOutline } from "react-icons/io5";
 
 import { Container } from "./Container";
+import { useAppSelector } from "../app/hooks";
+import { eTheme } from "../styles/theme";
 
 const HeaderEl = styled.header`
   box-shadow: ${({ theme }) => theme.colors.shadow};
@@ -30,16 +32,17 @@ const ModeSwitcher = styled.div`
   color: ${({ theme }) => theme.colors.text};
   font-size: ${({ theme }) => theme.font.size.small};
   cursor: pointer;
-  // font-weight: var(--fw-bold);
   text-transform: capitalize;
 `;
 
 export const Header = () => {
-  const theme = "light";
+  const theme = useAppSelector((state) => state.theme);
 
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
+  // const theme = "light";
+
+  // useEffect(() => {
+  //   document.body.setAttribute("data-theme", theme);
+  // }, [theme]);
 
   return (
     <HeaderEl>
