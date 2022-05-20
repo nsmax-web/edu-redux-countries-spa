@@ -3,21 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { List } from "../components/List";
 import { Card } from "../components/Card";
 import { Controls } from "../components/Controls";
-
-interface ICountries {
-  name: string;
-  population: number;
-  region: string;
-  capital: string;
-  flags: {
-    png: string;
-  };
-}
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import {
+  selectAllCountries,
+  selectCountriesInfo,
+} from "../store/countries/selectors";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { loadCountries } from "../store/countries/actions";
 
 export const HomePage = () => {
   const navigate = useNavigate();
 
-  const countries = [] as ICountries[];
+  const dispatch = useAppDispatch();
+  const countries = useAppSelector(selectAllCountries);
+  const { status, error, qty } = useAppSelector(selectCountriesInfo);
+
+  useEffect(() => {
+    dispatch(loadCountries());
+  }, []);
 
   return (
     <>

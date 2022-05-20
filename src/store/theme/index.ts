@@ -1,8 +1,16 @@
-import { setTheme } from "./actions";
 import { eTheme } from "./../../styles/theme";
-import { createReducer } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// FIXME: createSlice
-export const themeReducer = createReducer(eTheme.dark, (builder) => {
-  builder.addCase(setTheme, (state, action) => action.payload);
+const themeSlice = createSlice({
+  name: "theme",
+  initialState: eTheme.dark,
+  reducers: {
+    setTheme: (state: eTheme, action: PayloadAction<eTheme>) => {
+      state = action.payload;
+    },
+  },
 });
+
+export const themeReducer = themeSlice.reducer;
+
+export const { setTheme } = themeSlice.actions;

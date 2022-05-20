@@ -5,7 +5,7 @@ import { IoMoon, IoMoonOutline } from "react-icons/io5";
 import { Container } from "./Container";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { eTheme } from "../styles/theme";
-import { setTheme } from "../store/theme/actions";
+import { setTheme } from "../store/theme";
 
 const HeaderEl = styled.header`
   box-shadow: ${({ theme }) => theme.colors.shadow};
@@ -36,8 +36,8 @@ const ModeSwitcher = styled.div`
 `;
 
 export const Header = () => {
-  const theme = useAppSelector((state) => state.theme);
   const dispatch = useAppDispatch();
+  const theme = useAppSelector((state) => state.theme);
 
   const toggleTheme = () => {
     dispatch(setTheme(theme === eTheme.dark ? eTheme.light : eTheme.dark));
