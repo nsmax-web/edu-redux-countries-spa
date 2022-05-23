@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 import { IoSearch } from "react-icons/io5";
 import { ChangeEvent, FC } from "react";
-
-interface Props {
-  search: string;
-  setSearch: (e: ChangeEvent<HTMLInputElement>) => void;
-}
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { selectSearch } from "../store/controls/selectors";
+import { setSearch } from "../store/controls/actions";
 
 const InputContainer = styled.label`
   background-color: ${({ theme }) => theme.colors.base};
@@ -36,11 +34,18 @@ const Input = styled.input.attrs({
   background-color: ${({ theme }) => theme.colors.base};
 `;
 
-export const Search: FC<Props> = ({ search, setSearch }) => {
+export const Search: FC = () => {
+  const dispatch = useAppDispatch();
+  const search = useAppSelector(selectSearch);
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearch(e.target.value));
+  };
+
   return (
     <InputContainer>
       <IoSearch />
-      <Input onChange={setSearch} value={search} />
+      <Input onChange={handleSearch} value={search} />
     </InputContainer>
   );
 };

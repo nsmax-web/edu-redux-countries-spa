@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 import { Search } from "./Search";
 import { CustomSelect } from "./CustomSelect";
-import { ChangeEvent } from "react";
 
 const optionsMap = {
   Africa: { value: "Africa", label: "Africa" },
@@ -26,11 +25,9 @@ const Wrapper = styled.div`
 `;
 
 export const Controls = () => {
-  const setSearch = (e: ChangeEvent<HTMLInputElement>) => {};
-
   return (
     <Wrapper>
-      <Search search={""} setSearch={setSearch} />
+      <Search />
       <CustomSelect
         options={options}
         placeholder="Filter by Region"

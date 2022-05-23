@@ -4,13 +4,18 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import * as api from "../config";
+import { controlsReducer } from "./controls";
 import { countriesReducer } from "./countries";
 import { themeReducer } from "./theme/index";
 
 export type IApi = typeof api;
 
 export const store = configureStore({
-  reducer: { theme: themeReducer, countries: countriesReducer },
+  reducer: {
+    theme: themeReducer,
+    countries: countriesReducer,
+    controls: controlsReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
@@ -24,9 +29,9 @@ export const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-// export type AppThunk<ReturnType = void> = ThunkAction<
-//   ReturnType,
-//   RootState,
-//   unknown,
-//   Action<string>
-// >;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

@@ -40,6 +40,7 @@ export const Header = () => {
   const theme = useAppSelector((state) => state.theme);
 
   const toggleTheme = () => {
+    console.log(theme);
     dispatch(setTheme(theme === eTheme.dark ? eTheme.light : eTheme.dark));
   };
 
@@ -49,7 +50,7 @@ export const Header = () => {
         <Wrapper>
           <Title>Where is the world?</Title>
           <ModeSwitcher onClick={toggleTheme}>
-            {theme === "light" ? (
+            {theme === eTheme.light ? (
               <IoMoonOutline size="14px" />
             ) : (
               <IoMoon size="14px" />

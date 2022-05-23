@@ -1,6 +1,5 @@
-import { ThunkDispatch } from "redux-thunk";
 import { AxiosStatic } from "axios";
-import { AppDispatch, IApi, RootState } from "./../index";
+import { IApi } from "./../index";
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 
 export interface ICountry {
@@ -22,11 +21,11 @@ export const setError = createAction<string>("countries/error");
 export const loadCountries = createAsyncThunk<
   ICountry[],
   undefined,
-  { extra: { client: AxiosStatic; api: IApi } }
->("load", async (_, { extra: { client, api } }) => {
+  { extra: { client: AxiosStatic; api: IApi }; rejectValue: string }
+>("countries/load", async (_, { extra: { client, api }, rejectWithValue }) => {
   const data = await client
     .get(api.ALL_COUNTRIES)
     .then(({ data }) => data)
-    .catch((err) => err.message);
+    .catch((err) => rejectWithValue(err.message));
   return data;
 });
